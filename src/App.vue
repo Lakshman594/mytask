@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Hello, {{ userName }}!</h1>
+    <input type="text" v-model="userNameInput" />
+    <button @click="updateUserName">Update Name</button>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref } from '@vue/reactivity';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const userName = ref('Vue');
+const userNameInput = ref('');
+
+// const formattedUserName = computed(() => {
+//   return userName.value.toUpperCase();
+// });
+
+function updateUserName() {
+  userName.value = userNameInput.value;
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
